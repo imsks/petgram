@@ -1,23 +1,23 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import PhotoCamera from '@material-ui/icons/PhotoCamera'
+import PhotoCamera from '@mui/icons-material/PhotoCamera'
 import './CreatePet.css'
 import {
   TextField,
   Container,
-  StylesProvider,
   Typography,
   Button,
   IconButton,
   MenuItem,
-} from '@material-ui/core'
+} from '@mui/material'
+import StylesProvider from '@emotion/styled'
 
 function CreatePet() {
   // Add variables
 
-  const handleImage = (event) => {}
+  const handleImage = (event) => { }
 
-  const handleSubmit = async (e) => {}
+  const handleSubmit = async (e) => { }
 
   return (
     <StylesProvider injectFirst>
@@ -29,7 +29,7 @@ function CreatePet() {
           <Typography className="title" color="textPrimary" gutterBottom>
             Add a photo of your pet
           </Typography>
-          
+
           {/* Add Form */}
 
 

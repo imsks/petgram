@@ -5,15 +5,15 @@ import {
   Container,
   Grid,
   Link,
-  StylesProvider,
   Typography,
-} from '@material-ui/core'
+} from '@mui/material'
+import { StyledEngineProvider } from '@mui/material'
 import './Footer.css'
 import logo from '../../../images/logo.jpg'
 
 function Footer() {
   return (
-    <StylesProvider injectFirst>
+    <StyledEngineProvider injectFirst>
       <footer>
         <AppBar className="primary-color marginT-3 pad-2" position="static">
           <Grid component={Container} container>
@@ -62,7 +62,7 @@ function Footer() {
           </Grid>
         </AppBar>
       </footer>
-    </StylesProvider>
+    </StyledEngineProvider>
   )
 }
 

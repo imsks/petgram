@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import CircularStatic from '../../commons/CircularProgressWithLabel'
-import ImageListItem from '@material-ui/core/ImageListItem'
-import IconButton from '@material-ui/core/IconButton'
-import Button from '@material-ui/core/Button'
-import ImageListItemBar from '@material-ui/core/ImageListItemBar'
-import { Grid } from '@material-ui/core'
+import ImageListItem from '@mui/material/ImageListItem'
+import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button'
+import ImageListItemBar from '@mui/material/ImageListItemBar'
+import { Grid } from '@mui/material'
 import './PetGallery.css'
 
 
@@ -17,7 +17,7 @@ function PetGallery() {
 
   return (
     <div style={{ minHeight: '70vh', paddingBottom: '3rem' }}>
-       {/* Add pet's Data */}
+      {/* Add pet's Data */}
 
 
     </div>

@@ -1,21 +1,21 @@
 import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
-import VerifiedUserSharpIcon from '@material-ui/icons/VerifiedUserSharp'
-import InputBase from '@material-ui/core/InputBase'
-import Badge from '@material-ui/core/Badge'
-import MenuItem from '@material-ui/core/MenuItem'
-import Menu from '@material-ui/core/Menu'
-import SearchIcon from '@material-ui/icons/Search'
-import AccountCircle from '@material-ui/icons/AccountCircle'
-import MailIcon from '@material-ui/icons/Mail'
-import NotificationsIcon from '@material-ui/icons/Notifications'
-import MoreIcon from '@material-ui/icons/MoreVert'
-import { StylesProvider } from '@material-ui/core/styles'
+import Button from '@mui/material/Button'
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import Typography from '@mui/material/Typography'
+import VerifiedUserSharpIcon from '@mui/icons-material/VerifiedUserSharp'
+import InputBase from '@mui/material/InputBase'
+import Badge from '@mui/material/Badge'
+import MenuItem from '@mui/material/MenuItem'
+import Menu from '@mui/material/Menu'
+import SearchIcon from '@mui/icons-material/Search'
+import AccountCircle from '@mui/icons-material/AccountCircle'
+import MailIcon from '@mui/icons-material/Mail'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import MoreIcon from '@mui/icons-material/MoreVert'
+import { StyledEngineProvider } from '@mui/material'
 import './Navbar.css'
 import logo from '../../../images/logo.jpg'
 
@@ -60,6 +60,7 @@ export const Navbar = () => {
   )
 
   const mobileMenuId = 'primary-search-account-menu-mobile'
+
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -101,7 +102,7 @@ export const Navbar = () => {
   )
 
   return (
-    <StylesProvider injectFirst>
+    <StyledEngineProvider injectFirst>
       <div className="grow">
         <AppBar position="static">
           <Toolbar>
@@ -152,6 +153,6 @@ export const Navbar = () => {
         {renderMobileMenu}
         {renderMenu}
       </div>
-    </StylesProvider>
+    </StyledEngineProvider>
   )
 }

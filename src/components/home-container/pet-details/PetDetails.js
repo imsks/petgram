@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import ShareIcon from '@material-ui/icons/Share'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ShareIcon from '@mui/icons-material/Share'
 import {
   TextField,
   List,
@@ -15,8 +15,8 @@ import {
   Typography,
   Button,
   Card,
-  StylesProvider,
-} from '@material-ui/core'
+} from '@mui/material'
+import StylesProvider from '@emotion/styled'
 import './PetDetails.css'
 
 
@@ -31,15 +31,15 @@ function PetDetails({ account, contractData }) {
     }
   }, [petId, contractData])
 
-  const getImage = (ipfsURL) => {}
+  const getImage = (ipfsURL) => { }
 
-  const getMetadata = async () => {}
+  const getMetadata = async () => { }
 
-  const mintNFT = async (petId) => {}
+  const mintNFT = async (petId) => { }
 
-  const handleChange = (event) => {}
+  const handleChange = (event) => { }
 
-  const handleSubmit = (event) => {}
+  const handleSubmit = (event) => { }
 
 
 
@@ -54,7 +54,7 @@ function PetDetails({ account, contractData }) {
             <Grid item xs={12} sm={6} className="grid-container">
               {/* Add pet details */}
 
-              
+
             </Grid>
 
             <Grid item xs={12} sm={6}>

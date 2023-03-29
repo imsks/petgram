@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { StylesProvider } from '@material-ui/core/styles'
+import StylesProvider from '@emotion/styled'
 import PropTypes from 'prop-types'
-import { CircularProgress, Typography, Box } from '@material-ui/core'
+import { CircularProgress, Typography, Box } from '@mui/material'
 
 function CircularProgressWithLabel(props) {
   return (

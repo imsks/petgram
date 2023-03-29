@@ -1,12 +1,13 @@
 import React from 'react'
-import { StylesProvider, Chip, Container } from '@material-ui/core'
+import { Chip, Container } from '@mui/material'
 import './Home.css'
 import PetGallery from '../gallery/PetGallery'
+import { StyledEngineProvider } from '@mui/material'
 
-function Home() {
+const Home = () => {
 
   return (
-    <StylesProvider injectFirst>
+    <StyledEngineProvider injectFirst>
       <Container>
         <div className="label-btns">
           <Chip
@@ -24,7 +25,7 @@ function Home() {
         </div>
         <PetGallery />
       </Container>
-    </StylesProvider>
+    </StyledEngineProvider>
   )
 }
 

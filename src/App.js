@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import './App.css'
 import { Navbar } from './components/layout/navbar/Navbar'
 import Footer from './components/layout/footer/Footer'
@@ -20,13 +20,11 @@ function App() {
     <Router>
       <div className="cl">
         <Navbar />
-        <Route exact path="/" component={Home} />
-        <Switch>
-          <Route exact path="/create-pet" component={CreatePet} />
-          <Route path="/pet-details/:petId">
-            <PetDetails />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route exact path="/" Component={Home} />
+          <Route exact path="/create-pet" Component={CreatePet} />
+          <Route path="/pet-details/:petId" Component={PetDetails} />
+        </Routes>
         <Footer />
       </div>
     </Router>
