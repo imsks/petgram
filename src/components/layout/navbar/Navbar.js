@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
@@ -18,10 +18,14 @@ import MoreIcon from '@mui/icons-material/MoreVert'
 import { StyledEngineProvider } from '@mui/material'
 import './Navbar.css'
 import logo from '../../../images/logo.jpg'
+import withRouter from '../../../hooks/withRouter'
+import useWeb3 from '../../../hooks/useWeb3'
 
-export const Navbar = () => {
+export const Navbar = withRouter(() => {
   const [anchorEl, setAnchorEl] = useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null)
+
+  const { account, connectWallet } = useWeb3()
 
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
@@ -125,7 +129,32 @@ export const Navbar = () => {
             <div className="grow" />
             <div className="sectionDesktop">
               {/* Add Account  */}
-
+              {
+                account ? (
+                  <>
+                    <Button className="whiteLink">
+                      {account.substring(0, 8)}...{account.substring(32, 24)}
+                    </Button>
+                    <Button
+                      variant="contained"
+                      className="connected-btn"
+                      endIcon={<VerifiedUserSharpIcon />}
+                    >
+                      Connected
+                    </Button>
+                  </>
+                ) : (
+                  <Button
+                    variant="contained"
+                    className="connect-wallet-btn"
+                    onClick={() => {
+                      connectWallet()
+                    }}
+                  >
+                    Connect Wallet
+                  </Button>
+                )
+              }
               <IconButton
                 edge="end"
                 aria-label="account of current user"
@@ -155,4 +184,4 @@ export const Navbar = () => {
       </div>
     </StyledEngineProvider>
   )
-}
+})
