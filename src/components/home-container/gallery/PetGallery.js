@@ -6,6 +6,8 @@ import Button from '@mui/material/Button'
 import ImageListItemBar from '@mui/material/ImageListItemBar'
 import { Grid } from '@mui/material'
 import './PetGallery.css'
+import { apiKey } from '../../../APIKEYS'
+import { Link } from 'react-router-dom'
 
 
 function PetGallery() {
@@ -13,13 +15,89 @@ function PetGallery() {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    const loadPets = async () => {
+      try {
+        setLoading(true)
+        let cids = await fetch('https://api.nft.storage', {
+          headers: {
+            Authorization: `Bearer ${apiKey}`,
+            'Content-Type': 'application/json',
+          },
+        })
+        cids = await cids.json()
+        const temp = []
+        for (let cid of cids.value) {
+          if (cid?.cid) {
+            let data = await fetch(
+              `https://ipfs.io/ipfs/${cid.cid}/metadata.json`,
+            )
+            data = await data.json()
+
+            const getImage = (ipfsURL) => {
+              if (!ipfsURL) return
+              ipfsURL = ipfsURL.split('://')
+              return 'https://ipfs.io/ipfs/' + ipfsURL[1]
+            }
+
+            data.image = getImage(data.image)
+            data.cid = cid.cid
+            data.created = cid.created
+            temp.push(data)
+          }
+        }
+        setPetsData(temp)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
+    }
+    loadPets()
   }, [])
 
   return (
     <div style={{ minHeight: '70vh', paddingBottom: '3rem' }}>
-      {/* Add pet's Data */}
-
-
+      {
+        loading ? (
+          <CircularStatic />
+        ) : (
+          <div style={{ flexGrow: 1 }}>
+            <Grid container spacing={1}>
+              {petsData.length ? (
+                petsData.map((pet, index) => (
+                  <Grid item xs={6} sm={3} key={index}>
+                    <ImageListItem style={{ height: '450px', listStyle: 'none' }}>
+                      <img src={pet.image} alt={pet.name} />
+                      <ImageListItemBar
+                        title={pet.name}
+                        subtitle={<span>by: {pet.description}</span>}
+                        actionIcon={
+                          <IconButton
+                            aria-label={`info about ${pet.name}`}
+                            className="icon"
+                          >
+                            <Button
+                              variant="contained"
+                              size="small"
+                              component={Link}
+                              to={`/pet-details/${pet.cid}`}
+                              className="view-btn"
+                            >
+                              View
+                            </Button>
+                          </IconButton>
+                        }
+                      />
+                    </ImageListItem>
+                  </Grid>
+                ))
+              ) : (
+                <h2>No Pets Yet...</h2>
+              )}
+            </Grid>
+          </div>
+        )
+      }
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Web3 from 'web3'
 import MyPet from '../abis/Pet.json'
 
@@ -42,6 +42,10 @@ const useWeb3 = () => {
         await loadWeb3()
         await getContract()
     }
+
+    useEffect(() => {
+        connectWallet()
+    }, [])
 
     return {
         account,
